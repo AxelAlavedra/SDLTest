@@ -8,9 +8,9 @@ void update() {
 	player.update();
 }
 void render() {
-	VideoManager->renderBackground();
+	sVideoManager->renderBackground();
 	player.render();
-	VideoManager->render();
+	sVideoManager->render();
 }
 void init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -33,6 +33,27 @@ int main(int argc, char* argv[])
 		if (event.type == SDL_QUIT) {
 			break;
 		}
+		if (event.type == SDL_KEYDOWN) {
+			switch (event.key.keysym.scancode) {
+			case SDL_SCANCODE_UP:
+				player.setDirection(UP);
+				player.setState(MOVING);
+				break;
+			case SDL_SCANCODE_DOWN:
+				player.setDirection(DOWN);
+				player.setState(MOVING);
+				break;
+			case SDL_SCANCODE_LEFT:
+				player.setDirection(LEFT);
+				player.setState(MOVING);
+				break;
+			case SDL_SCANCODE_RIGHT:
+				player.setDirection(RIGHT);
+				player.setState(MOVING);
+				break;
+			}
+		}
+		else player.setState(IDLE);
 
 		update();
 		render();

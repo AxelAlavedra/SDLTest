@@ -1,12 +1,12 @@
 #include "Singletons.h"
-Video* VideoManager;
+Video* sVideoManager;
 
 void instanceSingletons()
 {
-	VideoManager = Video::getInstance();
+	sVideoManager = Video::getInstance();
 }
 
 void destroySingletons()
 {
-	VideoManager->~Video();
+	sVideoManager->~Video();
 }

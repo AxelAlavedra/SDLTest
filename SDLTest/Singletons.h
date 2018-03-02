@@ -2,7 +2,7 @@
 #include "Utilities.h"
 #include "Video.h"
 
-extern Video* VideoManager;
+extern Video* sVideoManager;
 
 void instanceSingletons();
 void destroySingletons();

@@ -12,7 +12,7 @@ public:
 	void render();
 private:
 	SDL_Renderer * renderer;
-	SDL_Window*		window;
+	SDL_Window* window;
 	Video();
 };
 
