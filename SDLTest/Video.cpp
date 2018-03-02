@@ -11,6 +11,7 @@ Video::Video()
 
 Video::~Video()
 {
+	instance = NULL;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 }
@@ -23,7 +24,7 @@ void Video::renderBackground()
 
 void Video::renderRect(SDL_Rect* rect, int r, int g, int b, int a)
 {
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderFillRect(renderer, rect);
 }
 

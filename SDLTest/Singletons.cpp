@@ -8,5 +8,5 @@ void instanceSingletons()
 
 void destroySingletons()
 {
-	sVideoManager->~Video();
+	delete sVideoManager;
 }
