@@ -1,3 +1,4 @@
+#pragma once
 #include "../SDL/include/SDL.h"
 #pragma comment(lib,"../SDL/lib/x86/SDL2.lib")
 #pragma comment(lib,"../SDL/lib/x86/SDL2main.lib")
