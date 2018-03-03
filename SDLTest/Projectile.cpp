@@ -9,8 +9,8 @@ Projectile::Projectile()
 
 Projectile::Projectile(int x, int y)
 {
-	speed = 15;
-	rect = { x , y, 30, 25};
+	speed = 25;
+	rect = { x , y, 30, 5};
 	destroyed = false;
 }
 

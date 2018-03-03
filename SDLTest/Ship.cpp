@@ -5,7 +5,7 @@ Ship::Ship()
 	state = IDLE;
 	speed = 5;
 	shotTimer = 0;
-	shotCD = 25;
+	shotCD = 10;
 	rect = { WIDTH / 6,HEIGHT / 6,WIDTH / 4,HEIGHT / 4 };
 	for (bool &dir : directions) {
 		dir = false;
@@ -42,7 +42,7 @@ void Ship::render()
 void Ship::shoot()
 {
 	if (canShoot()) {
-		Projectile* proj = new Projectile(rect.x + rect.w, rect.y + (rect.h/2 - 25));
+		Projectile* proj = new Projectile(rect.x + rect.w, rect.y + (rect.h/2 - 5));
 		projectiles.push_back(proj);
 		shotTimer = shotCD;
 	}
