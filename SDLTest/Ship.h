@@ -9,16 +9,14 @@ public:
 	Ship();
 	~Ship();
 	void update();
-	void setState(int st);
-	int getState();
-	void setDirection(int direction, bool state);
 	void render();
 	void shoot();
+
+	int xVelocity;
+	int yVelocity;
 private:
 	void shotCooldown();
 	bool canShoot();
-	bool directions[4];
-	int state;
 	SDL_Rect rect;
 	int speed;
 	int shotCD;

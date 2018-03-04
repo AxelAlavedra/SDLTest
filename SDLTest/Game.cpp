@@ -4,7 +4,7 @@
 SDL_Renderer* Game::renderer = nullptr;
 
 Ship player;
-void playerMovement(const Uint8* currentKeyStates);
+void playerControls(const Uint8* currentKeyStates);
 
 Game::Game() {}
 Game::~Game() {}
@@ -34,13 +34,7 @@ void Game::handleEvents()
 				isRunning = false;
 				return;
 			}
-
-			playerMovement(currentKeyStates);
-
-			if (currentKeyStates[SDL_SCANCODE_SPACE])
-			{
-				player.shoot();
-			}
+			playerControls(currentKeyStates);
 		}
 	}
 }
@@ -67,35 +61,18 @@ void Game::close()
 }
 
 
-void playerMovement(const Uint8* currentKeyStates) {
-	player.setState(IDLE);
+void playerControls(const Uint8* currentKeyStates) {
+	int y = 0;
+	int x = 0;
 
-	if (currentKeyStates[SDL_SCANCODE_UP])
-	{
-		player.setDirection(UP, true);
-		player.setState(MOVING);
-	}
-	else player.setDirection(UP, false);
+	if (currentKeyStates[SDL_SCANCODE_UP]) y = -1;
+	if (currentKeyStates[SDL_SCANCODE_DOWN]) y = 1;
+	if (currentKeyStates[SDL_SCANCODE_LEFT]) x = -1;
+	if (currentKeyStates[SDL_SCANCODE_RIGHT]) x = 1;
 
-	if (currentKeyStates[SDL_SCANCODE_DOWN])
-	{
-		player.setDirection(DOWN, true);
-		player.setState(MOVING);
-	}
-	else player.setDirection(DOWN, false);
+	player.xVelocity = x;
+	player.yVelocity = y;
 
-	if (currentKeyStates[SDL_SCANCODE_LEFT])
-	{
-		player.setDirection(LEFT, true);
-		player.setState(MOVING);
-	}
-	else player.setDirection(LEFT, false);
-
-	if (currentKeyStates[SDL_SCANCODE_RIGHT])
-	{
-		player.setDirection(RIGHT, true);
-		player.setState(MOVING);
-	}
-	else player.setDirection(RIGHT, false);
+	if (currentKeyStates[SDL_SCANCODE_SPACE]) player.shoot();
 }
 

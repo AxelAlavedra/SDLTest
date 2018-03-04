@@ -3,14 +3,12 @@
 
 Ship::Ship()
 {
-	state = IDLE;
 	speed = 5;
 	shotTimer = 0;
 	shotCD = 10;
+	xVelocity = 0;
+	yVelocity = 0;
 	rect = { WIDTH / 6,HEIGHT / 6,WIDTH / 4,HEIGHT / 4 };
-	for (bool &dir : directions) {
-		dir = false;
-	}
 }
 
 Ship::~Ship()
@@ -62,22 +60,7 @@ bool Ship::canShoot() {
 
 void Ship::movement()
 {
-	if (state == MOVING) {
-		if (directions[UP]) rect.y -= speed;
-		if (directions[DOWN]) rect.y += speed;
-		if (directions[RIGHT]) rect.x += speed;
-		if (directions[LEFT]) rect.x -= speed;
-	}
-}
-
-void Ship::setState(int state) {
-	this->state = state;
-}
-int Ship::getState() {
-	return state;
-}
-
-void Ship::setDirection(int direction, bool state) {
-	directions[direction] = state;
+	rect.x += xVelocity * speed;
+	rect.y += yVelocity * speed;
 }
 
