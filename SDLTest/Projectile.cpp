@@ -1,5 +1,5 @@
 #include "Projectile.h"
-
+#include "Game.h"
 
 
 Projectile::Projectile()
@@ -28,7 +28,8 @@ void Projectile::update()
 
 void Projectile::render()
 {
-	sVideoManager->renderRect(&rect, 0, 255, 0, 255);
+	SDL_SetRenderDrawColor(Game::renderer, 0, 255, 0, 255);
+	SDL_RenderFillRect(Game::renderer, &rect);
 }
 
 bool Projectile::getDestroyed() 

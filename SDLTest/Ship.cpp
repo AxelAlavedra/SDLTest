@@ -1,4 +1,5 @@
 #include "Ship.h"
+#include "Game.h"
 
 Ship::Ship()
 {
@@ -33,7 +34,8 @@ void Ship::update()
 
 void Ship::render()
 {
-	sVideoManager->renderRect(&rect, 255, 0, 0, 255);
+	SDL_SetRenderDrawColor(Game::renderer, 255, 0, 0, 255);
+	SDL_RenderFillRect(Game::renderer, &rect);
 	for (Projectile* &proj : projectiles) {
 		proj->render();
 	}
@@ -42,7 +44,7 @@ void Ship::render()
 void Ship::shoot()
 {
 	if (canShoot()) {
-		Projectile* proj = new Projectile(rect.x + rect.w, rect.y + (rect.h/2 - 5));
+        Projectile* proj = new Projectile(rect.x + rect.w, rect.y + (rect.h/2 - 5));
 		projectiles.push_back(proj);
 		shotTimer = shotCD;
 	}

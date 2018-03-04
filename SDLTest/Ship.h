@@ -1,6 +1,5 @@
 #pragma once
 #include "Utilities.h"
-#include "Singletons.h"
 #include "Projectile.h"
 #include <list>
 
